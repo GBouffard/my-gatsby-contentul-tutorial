@@ -1,8 +1,10 @@
-:barber: Gatsby & Contentul tutorial :barber:
+:barber: Gatsby & Contentul & Netlify tutorial :barber:
 
-My first Gatsby Contentul tutorial
+My first Gatsby Contentul Netlify tutorial
 Followed the following tutorial:
 [Tutorial](https://dev.to/thebabscraig/content-management-with-gatsby-netlify-and-contentful-3kbg)
+
+[Deploy preview](https://gbouffard-my-gatsby-contentul-tutorial.netlify.com/)
 
 ## How to run it:
 

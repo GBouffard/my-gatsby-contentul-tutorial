@@ -9,8 +9,8 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <div className="home">
-      <h1>Hello There</h1>
-      <p>Welcome my awesome blog</p>
+      <h1>Hello World</h1>
+      <p>Welcome to my first Gatsby + Contentul + Netlify tutorial</p>
       <Link to="/blogposts/">View all posts</Link>
     </div>
   </Layout>
