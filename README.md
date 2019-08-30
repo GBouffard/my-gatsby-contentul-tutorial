@@ -1,14 +1,14 @@
-:barber: Gatsby & Contentul & Netlify tutorial :barber:
+:ribbon: Gatsby :heavy_plus_sign: Contentul :heavy_plus_sign: Netlify = :heart: :ribbon:
 
-My first Gatsby Contentul Netlify tutorial
-Followed the following tutorial:
+This is my first Gatsby + Contentul + Netlify tutorial built from scratch to understand the initial configuration of such a project.
+
+I followed this tutorial:
 [Tutorial](https://dev.to/thebabscraig/content-management-with-gatsby-netlify-and-contentful-3kbg)
+and it worked!
 
 [Deploy preview](https://gbouffard-my-gatsby-contentul-tutorial.netlify.com/)
 
-## How to run it:
-
-A simple set up file:
+## How to run it locally:
 
 ```
 git clone git@github.com:GBouffard/my-gatsby-contentul-tutorial.git
@@ -16,6 +16,8 @@ cd my-gatsby-contentul-tutorial
 yarn
 gatsby develop
 ```
+
+nb: You need to add your own environment variables in .env for YOUR_SPACE_ID & YOUR_CONTENT_DELIVERY_API_KEY.
 
 You can now navigate to `http://localhost:8000`
 
@@ -47,4 +49,6 @@ Example of query:
 
 ## Screenshots:
 
-![](public/icons/icon-48x48.png)
+![](screenshots/contentful-screenshot1.png)
+
+![](screenshots/contentful-screenshot2.png)
