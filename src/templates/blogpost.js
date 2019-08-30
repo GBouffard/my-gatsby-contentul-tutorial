@@ -5,7 +5,6 @@ import SEO from "../components/seo"
 
 const BlogPost = ({ data }) => {
   const { title, body, image, tags } = data.contentfulBlogPost
-  console.log("-------", tags)
   return (
     <Layout>
       <SEO title={title} />

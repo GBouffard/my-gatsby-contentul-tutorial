@@ -19,7 +19,7 @@ You can now navigate to `http://localhost:8000`
 
 ## Using The GraphiQL playground:
 
-the GraphiQL playground can be used at `http://localhost:8000/___graphql in`
+the GraphiQL playground can be used at `http://localhost:8000/___graphql`
 
 Example of query:
 
