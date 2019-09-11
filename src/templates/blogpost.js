@@ -7,7 +7,10 @@ const BlogPost = ({ data }) => {
   const { title, body, image, tags } = data.contentfulBlogPost
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO
+        title={title}
+        description={`My fake Blog description that will appear in Meta - ${title}`}
+      />
       <div className="blogpost">
         <h1>{title}</h1>
         <img alt={title} src={image.file.url} />
