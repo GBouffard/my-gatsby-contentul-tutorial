@@ -3,8 +3,16 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+// should have been in Contentful but using object for now.
+const BlogPostContentful = {
+  relatedBlog: "Related to : ",
+  more: "View all posts",
+  homepageLink: "Back to Home Page",
+}
+
 const BlogPost = ({ data }) => {
-  const { title, body, image, tags } = data.contentfulBlogPost
+  const { title, body, image, tags, relatedTo } = data.contentfulBlogPost
+
   return (
     <Layout>
       <SEO
@@ -14,6 +22,7 @@ const BlogPost = ({ data }) => {
       <div className="blogpost">
         <h1>{title}</h1>
         <img alt={title} src={image.file.url} />
+
         <div className="tags">
           {tags &&
             tags.length &&
@@ -23,9 +32,16 @@ const BlogPost = ({ data }) => {
               </span>
             ))}
         </div>
+
         <p className="body-text">{body.body}</p>
-        <Link to="/blogposts">View more posts</Link>
-        <Link to="/">Back to Home</Link>
+        {BlogPostContentful.relatedBlog}
+        <Link
+          to={`/relatedBlogpost/${relatedTo.slug}`}
+        >{`${relatedTo.title}`}</Link>
+        <hr />
+
+        <Link to="/blogposts">{BlogPostContentful.more}</Link>
+        <Link to="/">{BlogPostContentful.homepageLink}</Link>
       </div>
     </Layout>
   )
@@ -47,6 +63,15 @@ export const pageQuery = graphql`
         }
       }
       tags
+      relatedTo {
+        slug
+        title
+        image {
+          file {
+            url
+          }
+        }
+      }
     }
   }
 `

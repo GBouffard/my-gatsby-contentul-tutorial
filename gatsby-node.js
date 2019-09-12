@@ -15,6 +15,14 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        allContentfulRelatedBlog {
+          edges {
+            node {
+              id
+              slug
+            }
+          }
+        }
       }
     `
   )
@@ -34,6 +42,19 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             slug: edge.node.slug,
             id: edge.node.id,
+          },
+        })
+      })
+
+      // create a related blog template
+      const relatedBlogTemplate = path.resolve("./src/templates/relatedBlog.js")
+      result.data.allContentfulRelatedBlog.edges.forEach(({ node }) => {
+        createPage({
+          path: `/relatedBlogpost/${node.slug}/`,
+          component: slash(relatedBlogTemplate),
+          context: {
+            slug: node.slug,
+            id: node.id,
           },
         })
       })
