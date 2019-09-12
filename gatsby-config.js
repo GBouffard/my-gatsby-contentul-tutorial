@@ -70,7 +70,7 @@ module.exports = {
               right: "40px",
               bottom: "40px",
               border: "1px solid #ccc",
-              background: "#fff",
+              background: "#FFFAF0",
               overflow: "auto",
               WebkitOverflowScrolling: "touch",
               borderRadius: "4px",
