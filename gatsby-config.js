@@ -22,13 +22,25 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Gatsby Guillaume Contentul tutorial`,
+        short_name: `Gatsby Tutorial`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#336699`,
+        theme_color: `red`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/french-fries.svg`,
+        // icons: [          // in case we want different icons
+        //   {
+        //     src: `/favicons/android-chrome-192x192.png`,
+        //     sizes: `192x192`,
+        //     type: `image/png`,
+        //   },
+        //   {
+        //     src: `/favicons/android-chrome-512x512.png`,
+        //     sizes: `512x512`,
+        //     type: `image/png`,
+        //   },
+        // ]
       },
     },
     {
@@ -38,5 +50,6 @@ module.exports = {
         accessToken: YOUR_CONTENT_DELIVERY_API_KEY,
       },
     },
+    `gatsby-plugin-offline`,
   ],
 }
