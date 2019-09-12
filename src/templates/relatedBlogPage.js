@@ -1,15 +1,15 @@
 import React, { Fragment, useEffect } from "react"
 import { Link, navigate } from "gatsby"
 
-const RelatedBlogPage = ({ data }) => {
-  const { title, image } = data.contentfulRelatedBlog
+import Image from "../components/Image"
+
+const RelatedBlogPage = ({ data: { contentfulRelatedBlog: relatedBlog } }) => {
+  const { title, image } = relatedBlog
 
   // allows to close the page with the escape key. A little feature I wanted to play with.
   const backToHomePage = "/"
-  const handleKeyup = ({ key }) => {
-    console.log(key)
-    return key === "Escape" ? navigate(backToHomePage) : null
-  }
+  const handleKeyup = ({ key }) =>
+    key === "Escape" ? navigate(backToHomePage) : null
 
   useEffect(() => {
     document.addEventListener("keyup", handleKeyup, false)
@@ -23,6 +23,8 @@ const RelatedBlogPage = ({ data }) => {
       </div>
       <br />
       <img alt={title} src={image.file.url} />
+      <br />
+      <Image />
       <br />
       <Link to="/">Back to home page</Link>
     </Fragment>

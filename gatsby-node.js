@@ -1,9 +1,10 @@
 const path = require(`path`)
 const slash = require(`slash`)
+const _ = require("lodash")
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-  // we use the provided allContentfulBlogPost query to fetch the data from Contentful
+  // we use the  allContentful prefix for all queries coming from Contentful
   return graphql(
     `
       {
@@ -34,8 +35,8 @@ exports.createPages = ({ graphql, actions }) => {
       // Resolve the paths to our template
       const blogPostTemplate = path.resolve("./src/templates/blogpost.js")
 
-      // Then for each result we create a page.
-      result.data.allContentfulBlogPost.edges.forEach(edge => {
+      // Then for each result we create a page. Using lodash in that case / not in the example below
+      _.each(result.data.allContentfulBlogPost.edges, edge => {
         createPage({
           path: `/blogpost/${edge.node.slug}/`,
           component: slash(blogPostTemplate),

@@ -6,15 +6,7 @@ const RelatedBlogContent = ({ modal, closeTo, title, image }) => (
   <Fragment>
     {`This Modal is about: ${title}`}
     <img alt={title} src={image.file.url} />
-    <div>
-      {modal ? (
-        <Link to={closeTo}>Close Modal</Link>
-      ) : (
-        <header>
-          <h1>Placeholder in case this component is not a modal</h1>
-        </header>
-      )}
-    </div>
+    <div>{modal && <Link to={closeTo}>Close Modal</Link>}</div>
   </Fragment>
 )
 
