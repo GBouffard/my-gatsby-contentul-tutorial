@@ -5,7 +5,8 @@ import SEO from "../components/seo"
 
 // should have been in Contentful but using object for now.
 const BlogPostContentful = {
-  relatedBlog: "Related to : ",
+  relatedBlogPage: "Link to related Blog as a page: ",
+  relatedBlogMedal: "Open the above as a modal instead",
   more: "View all posts",
   homepageLink: "Back to Home Page",
 }
@@ -34,9 +35,18 @@ const BlogPost = ({ data }) => {
         </div>
 
         <p className="body-text">{body.body}</p>
-        {BlogPostContentful.relatedBlog}
+        {BlogPostContentful.relatedBlogPage}
         <Link
-          to={`/relatedBlogpost/${relatedTo.slug}`}
+          to={`/relatedBlogpage/${relatedTo.slug}`}
+        >{`${relatedTo.title}`}</Link>
+        <hr />
+
+        {BlogPostContentful.relatedBlogMedal}
+        <Link
+          to={`/relatedBlogmodal/${relatedTo.slug}`}
+          state={{
+            modal: true,
+          }}
         >{`${relatedTo.title}`}</Link>
         <hr />
 

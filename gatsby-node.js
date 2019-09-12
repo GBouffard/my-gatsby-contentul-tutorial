@@ -46,12 +46,29 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
 
-      // create a related blog template
-      const relatedBlogTemplate = path.resolve("./src/templates/relatedBlog.js")
+      const relatedBlogPageTemplate = path.resolve(
+        "./src/templates/relatedBlogPage.js"
+      )
+
+      const relatedBlogModalTemplate = path.resolve(
+        "./src/templates/relatedBlogModal.js"
+      )
+
       result.data.allContentfulRelatedBlog.edges.forEach(({ node }) => {
+        // create related blogs as pages
         createPage({
-          path: `/relatedBlogpost/${node.slug}/`,
-          component: slash(relatedBlogTemplate),
+          path: `/relatedBlogpage/${node.slug}/`,
+          component: slash(relatedBlogPageTemplate),
+          context: {
+            slug: node.slug,
+            id: node.id,
+          },
+        })
+
+        // create related blogs as modals
+        createPage({
+          path: `/relatedBlogmodal/${node.slug}/`,
+          component: slash(relatedBlogModalTemplate),
           context: {
             slug: node.slug,
             id: node.id,
