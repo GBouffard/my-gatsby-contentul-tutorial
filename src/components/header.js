@@ -1,33 +1,33 @@
+import React, { Fragment } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+
+const headerStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  background: "sandybrown",
+  padding: "1rem",
+  marginBottom: `1.5rem`,
+}
+
+const linkStyle = {
+  color: `white`,
+  textDecoration: `none`,
+}
+
+const noMargins = {
+  margin: "0",
+}
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
+  <header style={headerStyle}>
+    <h2 style={noMargins}>
+      <Link to="/" style={linkStyle}>
+        {siteTitle}
+      </Link>
+    </h2>
+    <h5 style={noMargins}>Styled header</h5>
   </header>
 )
 
