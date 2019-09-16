@@ -5,6 +5,8 @@ const _ = require("lodash")
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   // we use the  allContentful prefix for all queries coming from Contentful
+
+  // allMarkdownRemark also includes the blog posts from Contentful so we filter by type: "markdown" which I added in my .md files
   return graphql(
     `
       {
@@ -21,6 +23,17 @@ exports.createPages = ({ graphql, actions }) => {
             node {
               id
               slug
+            }
+          }
+        }
+        allMarkdownRemark(
+          filter: { frontmatter: { type: { eq: "markdown" } } }
+        ) {
+          edges {
+            node {
+              frontmatter {
+                path
+              }
             }
           }
         }
@@ -74,6 +87,19 @@ exports.createPages = ({ graphql, actions }) => {
             slug: node.slug,
             id: node.id,
           },
+        })
+      })
+
+      // create markdown pages with custom path depending on path key from the .md files
+      const markdownPostTemplate = path.resolve(
+        `src/templates/markdown-page.js`
+      )
+
+      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+        createPage({
+          path: node.frontmatter.path,
+          component: markdownPostTemplate,
+          context: {},
         })
       })
     })

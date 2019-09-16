@@ -1,8 +1,8 @@
 ---
-title: My first markdown.
-description: This is my 1st one!
+title: Woohoo! This is my first markdown rendering!
+type: markdown
 date: "2019-09-16"
-image: ""
+path: "/first-markdown"
 tags: ["javascript", "react", "gatsby"]
 ---
 
