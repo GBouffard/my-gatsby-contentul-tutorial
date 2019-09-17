@@ -20,7 +20,7 @@ const IndexPage = ({ data }) => {
       <div className="home">
         <h1>Hello World</h1>
         <p>Welcome to my first Gatsby + Contentul + Netlify tutorial</p>
-        <Link to="/blogposts">View all posts</Link>
+        <Link to="/blogposts">View all posts comming from Contentful</Link>
         {markdownLinks}
         <Link to="/about-css-modules">A page using CSS modules</Link>
       </div>

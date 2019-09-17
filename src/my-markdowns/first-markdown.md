@@ -4,6 +4,7 @@ type: markdown
 date: "2019-09-16"
 path: "/first-markdown"
 tags: ["javascript", "react", "gatsby"]
+image: time.jpg
 ---
 
 ## Why do we use it?
