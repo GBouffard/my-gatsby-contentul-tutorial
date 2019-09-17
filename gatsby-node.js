@@ -95,11 +95,19 @@ exports.createPages = ({ graphql, actions }) => {
         `src/templates/markdown-page.js`
       )
 
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      const allMarkdowns = result.data.allMarkdownRemark.edges
+      allMarkdowns.forEach(({ node }, index) => {
         createPage({
           path: node.frontmatter.path,
           component: markdownPostTemplate,
-          context: {},
+          context: {
+            path: node.frontmatter.path,
+            prev: index === 0 ? null : allMarkdowns[index - 1],
+            next:
+              index === allMarkdowns.length - 1
+                ? null
+                : allMarkdowns[index + 1],
+          }, // Anything we passed inside the context object can be available as a props.pageContext.
         })
       })
     })
