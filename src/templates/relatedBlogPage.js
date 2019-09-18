@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react"
-import { Link, navigate } from "gatsby"
+import { Link, graphql, navigate } from "gatsby"
 
 import Image from "../components/Image"
 

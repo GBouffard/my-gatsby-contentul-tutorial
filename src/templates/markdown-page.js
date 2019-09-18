@@ -26,7 +26,6 @@ export default function Template({ data, pageContext, location }) {
         <Img fluid={markdown.frontmatter.image.childImageSharp.fluid} />
         <Share
           title={markdown.frontmatter.title}
-          url={markdown.frontmatter.path}
           pathname={location.pathname}
           // nb: location.pathname and markdown.frontmatter.path are the same.
           // Different ways of getting them.

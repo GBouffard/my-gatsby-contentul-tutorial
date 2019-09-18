@@ -101,7 +101,6 @@ exports.createPages = ({ graphql, actions }) => {
           path: node.frontmatter.path,
           component: markdownPostTemplate,
           context: {
-            path: node.frontmatter.path,
             prev: index === 0 ? null : allMarkdowns[index - 1],
             next:
               index === allMarkdowns.length - 1
