@@ -4,8 +4,9 @@ import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import PrevNext from "../components/prev-next"
+import Share from "../components/share"
 
-export default function Template({ data, pageContext }) {
+export default function Template({ data, pageContext, location }) {
   const { markdownRemark: markdown } = data
   const { prev, next } = pageContext
 
@@ -23,6 +24,13 @@ export default function Template({ data, pageContext }) {
         <br />
         <div>See below for the effect of image lazy loading:</div>
         <Img fluid={markdown.frontmatter.image.childImageSharp.fluid} />
+        <Share
+          title={markdown.frontmatter.title}
+          url={markdown.frontmatter.path}
+          pathname={location.pathname}
+          // nb: location.pathname and markdown.frontmatter.path are the same.
+          // Different ways of getting them.
+        />
       </div>
     </Fragment>
   )
