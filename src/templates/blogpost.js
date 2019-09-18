@@ -1,14 +1,15 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BackToHomepage from "../components/backToHomepage"
 
 // should have been in Contentful but using object for now.
 const BlogPostContentful = {
   relatedBlogPage: "Link to related Blog as a page: ",
   relatedBlogMedal: "Open the above as a modal instead",
   more: "View all posts",
-  homepageLink: "Back to Home Page",
 }
 
 const BlogPost = ({ data }) => {
@@ -51,7 +52,7 @@ const BlogPost = ({ data }) => {
         <hr />
 
         <Link to="/blogposts">{BlogPostContentful.more}</Link>
-        <Link to="/">{BlogPostContentful.homepageLink}</Link>
+        <BackToHomepage />
       </div>
     </Layout>
   )

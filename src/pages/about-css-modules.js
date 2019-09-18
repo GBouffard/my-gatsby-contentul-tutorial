@@ -1,8 +1,8 @@
 import React, { Fragment } from "react"
-import { Link } from "gatsby"
 
 import styles from "./about-css-modules.module.css"
 import Container from "../components/css-container"
+import BackToHomepage from "../components/backToHomepage"
 
 // props and styles have the same names so we can find them easily
 const User = props => (
@@ -33,6 +33,6 @@ export default () => (
       excerpt="I'm GB Evil's twin, a vertically aligned type of guy. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
     />
 
-    <Link to="/">Back to home page</Link>
+    <BackToHomepage />
   </Fragment>
 )

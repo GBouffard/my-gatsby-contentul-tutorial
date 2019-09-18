@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BackToHomepage from "../components/backToHomepage"
 
 const BlogPosts = ({ data }) => {
   const blogPosts = data.allContentfulBlogPost.edges
@@ -16,8 +17,7 @@ const BlogPosts = ({ data }) => {
             <Link to={`/blogpost/${post.slug}`}>{post.title}</Link>
           </div>
         ))}
-        <span className="mgBtm__24" />
-        <Link to="/">Go back to the homepage</Link>
+        <BackToHomepage />
       </div>
     </Layout>
   )

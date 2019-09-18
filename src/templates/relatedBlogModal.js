@@ -2,6 +2,8 @@ import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 
+import BackToHomepage from "../components/backToHomepage"
+
 const RelatedBlogContent = ({ modal, closeTo, title, image }) => (
   <Fragment>
     {`This Modal is about: ${title}`}
@@ -22,7 +24,7 @@ const RelatedBlogModal = ({ data }) => {
             title={title}
             image={image}
           />
-          <Link to="/">Go back to the homepage</Link>
+          <BackToHomepage />
         </Fragment>
       )}
     </ModalRoutingContext.Consumer>

@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect } from "react"
-import { Link, graphql, navigate } from "gatsby"
+import { graphql, navigate } from "gatsby"
 
 import Image from "../components/image"
+import BackToHomepage from "../components/backToHomepage"
 
 const RelatedBlogPage = ({ data: { contentfulRelatedBlog: relatedBlog } }) => {
   const { title, image } = relatedBlog
@@ -26,7 +27,7 @@ const RelatedBlogPage = ({ data: { contentfulRelatedBlog: relatedBlog } }) => {
       <br />
       <Image />
       <br />
-      <Link to="/">Back to home page</Link>
+      <BackToHomepage />
     </Fragment>
   )
 }

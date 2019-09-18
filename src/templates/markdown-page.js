@@ -1,9 +1,10 @@
 import React, { Fragment } from "react"
 import { Helmet } from "react-helmet"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import PrevNext from "../components/prev-next"
+import BackToHomepage from "../components/backToHomepage"
 import Share from "../components/share"
 
 export default function Template({ data, pageContext, location }) {
@@ -18,9 +19,7 @@ export default function Template({ data, pageContext, location }) {
         <h1>{markdown.frontmatter.title}</h1>
         <h4>{`Date added: ${markdown.frontmatter.date}`}</h4>
         <div dangerouslySetInnerHTML={{ __html: markdown.html }} />
-        <Link style={{ display: "flex", justifyContent: "center" }} to="/">
-          Back to Homepage
-        </Link>
+        <BackToHomepage />
         <br />
         <div>See below for the effect of image lazy loading:</div>
         <Img fluid={markdown.frontmatter.image.childImageSharp.fluid} />
