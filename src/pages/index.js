@@ -27,6 +27,9 @@ const IndexPage = () => (
         <li>
           <Link to="/about-css-modules">A page using CSS modules</Link>
         </li>
+        <li>
+          <Link to="/my-sass-page">A page using Sass</Link>
+        </li>
       </ul>
     </div>
   </Layout>

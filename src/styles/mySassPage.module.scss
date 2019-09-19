@@ -1,0 +1,73 @@
+$myPadding: 10px;
+$myMargin: 20px;
+
+%paragraph-custom-style {
+  padding: $myPadding;
+  margin: $myMargin;
+}
+
+@mixin myCustomMixin($bgColor: green, $padding: $myPadding) {
+  background: $bgColor;
+  padding: $padding;
+}
+
+.container {
+  background: blue;
+  @media (min-width: 1200px) {
+    background: lightseagreen;
+  }
+
+  > div {
+    :first-child:not(li) {
+      // also applies to the first li as :first-child applies to nested tags.
+      // to avoid I added the mention `:not(li)`
+      @include myCustomMixin(orange, 25px);
+      border-radius: 50px;
+    }
+  }
+
+  p {
+    margin: 0;
+    padding: 5px 50px;
+    color: black;
+    background: lightgreen;
+
+    &:hover {
+      background: lightpink;
+    }
+  }
+}
+
+p {
+  @extend %paragraph-custom-style;
+  color: black;
+  background: yellow;
+
+  &::first-letter {
+    color: darkgreen;
+    font-size: 3rem;
+  }
+
+  &::first-line {
+    font-weight: bold;
+    color: mediumblue;
+  }
+}
+
+li {
+  &:first-of-type {
+    color: red;
+  }
+
+  &:nth-child(3) {
+    color: blue;
+  }
+
+  &:last-of-type {
+    @extend %paragraph-custom-style;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: 12px;
+    background: lightskyblue;
+  }
+}
