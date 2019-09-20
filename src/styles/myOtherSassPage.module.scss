@@ -1,0 +1,24 @@
+.container {
+  background: red;
+
+  > div {
+    :first-child {
+      background: darkviolet;
+      color: lightyellow;
+    }
+  }
+
+  p {
+    color: darkorange;
+    background: lightyellow;
+  }
+}
+
+.paragraph {
+  background: black;
+  color: white;
+  padding: 20px;
+  margin: 50px;
+  font-size: 2rem;
+  border: 5px dashed white;
+}

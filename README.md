@@ -3,10 +3,11 @@
 This is my first Gatsby + Contentul + Netlify tutorial built from scratch to understand the initial configuration of such a project.
 
 I used these tutorials:
-[Tutorial 1](https://www.gatsbyjs.org/tutorial/)
-[Tutorial 2](https://dev.to/thebabscraig/content-management-with-gatsby-netlify-and-contentful-3kbg)
-[Tutorial 3](https://reactgo.com/gatsby-advanced-blog-tutorial)
-[Tutorial 4](https://medium.com/@PostgradExpat/using-gatsby-with-css-modules-and-scss-7e75a05533a4)
+
+- [Gatsbyjs tutorials](https://www.gatsbyjs.org/tutorial/)
+- [Content management with Gatsby, Netlify and Contentful](https://dev.to/thebabscraig/content-management-with-gatsby-netlify-and-contentful-3kbg)
+- [Gatsby advanced blog tutorial](https://reactgo.com/gatsby-advanced-blog-tutorial)
+- [Using Gatsby with css modules and scss](https://medium.com/@PostgradExpat/using-gatsby-with-css-modules-and-scss-7e75a05533a4)
 
 [Deploy preview](https://gbouffard-my-gatsby-contentul-tutorial.netlify.com/)
 

@@ -30,6 +30,11 @@ const IndexPage = () => (
         <li>
           <Link to="/my-sass-page">A page using Sass</Link>
         </li>
+        <li>
+          <Link to="/another-sass-page">
+            Another Sass page with same module names
+          </Link>
+        </li>
       </ul>
     </div>
   </Layout>
