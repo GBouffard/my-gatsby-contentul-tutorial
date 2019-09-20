@@ -38,7 +38,7 @@ $myMargin: 20px;
   }
 }
 
-p {
+.paragraph {
   @extend %paragraph-custom-style;
   color: black;
   background: yellow;
@@ -54,7 +54,7 @@ p {
   }
 }
 
-li {
+.listItem {
   &:first-of-type {
     color: red;
   }
