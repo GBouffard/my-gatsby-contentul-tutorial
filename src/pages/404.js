@@ -1,14 +1,33 @@
 import React from "react"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BackToHomepage from "../components/backToHomepage"
+
+const my404Container = {
+  position: "absolute",
+  height: "100%",
+  width: "100%",
+  background: "radial-gradient(crimson, black)",
+}
+
+const myMessage = {
+  color: "mistyrose",
+  margin: "50px auto",
+  display: "table",
+  fontSize: "3rem",
+  lineHeight: "7rem",
+  whiteSpace: "pre",
+  textShadow: "0 0 3px #FF0000, 0 0 5px #0000FF",
+}
 
 const NotFoundPage = () => (
-  <Layout>
+  <div style={my404Container}>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+    <div style={myMessage}>{`Aaaaahhhh!!!
+    Catastrophy!
+    Page Not Found`}</div>
+    <BackToHomepage />
+  </div>
 )
 
 export default NotFoundPage

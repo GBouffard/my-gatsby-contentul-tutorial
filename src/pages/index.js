@@ -35,6 +35,11 @@ const IndexPage = () => (
             Another Sass page with same module names
           </Link>
         </li>
+        <li>
+          <Link to="/this-does-not-work">
+            A link that does not exist and will redirect to my 404
+          </Link>
+        </li>
       </ul>
     </div>
   </Layout>
