@@ -10,13 +10,32 @@ const linkStyle = {
 }
 
 const BlogPosts = ({ data }) => {
-  const blogPosts = data.allContentfulBlogPost.edges
+  const allPosts = data.allContentfulBlogPost.edges // all the blog posts
+  const orderedPosts = data.allContentfulBlogPostsList.edges // Contentful order. Some post may be missing
+
+  // the following logic re-map all posts according to the order defined in Contentful
+  const orderArrayById = { orderedPosts }.orderedPosts[0].node.post.map(
+    ({ id }) => id
+  )
+
+  const mapFromOrder = orderArrayById.map(orderedId =>
+    allPosts.find(({ node }) => node.id === orderedId)
+  )
+
+  // If some posts from all the posts are missing from the order defined in Contentful they are retrieved
+  const missingFromOrder = allPosts.filter(
+    ({ node }) => !orderArrayById.includes(node.id)
+  )
+
+  // and concatenated to mapFromOrder
+  const allOrderedPosts = [...mapFromOrder, ...missingFromOrder]
+
   return (
     <Layout>
       <SEO title="Blog posts" />
       <h1>{"Here's a list of all blogposts!"}</h1>
       <div className="blogposts">
-        {blogPosts.map(({ node: post }) => (
+        {allOrderedPosts.map(({ node: post }) => (
           <div key={post.id}>
             <Link style={linkStyle} to={`/blogpost/${post.slug}`}>
               {post.title}
@@ -48,6 +67,16 @@ export const query = graphql`
             }
           }
           tags
+        }
+      }
+    }
+    allContentfulBlogPostsList {
+      edges {
+        node {
+          id
+          post {
+            id
+          }
         }
       }
     }

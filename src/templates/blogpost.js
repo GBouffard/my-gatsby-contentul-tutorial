@@ -35,9 +35,10 @@ const BlogPost = ({ data }) => {
             ))}
         </div>
 
+        <p className="body-text">{body.body}</p>
+
         {relatedTo && relatedTo.slug && (
           <Fragment>
-            <p className="body-text">{body.body}</p>
             {BlogPostContentful.relatedBlogPage}
             <Link
               to={`/relatedBlogpage/${relatedTo.slug}`}
