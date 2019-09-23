@@ -1,13 +1,23 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BackToHomepage from "../components/backToHomepage"
 
-const linkStyle = {
-  marginLeft: "20px",
-}
+const StyledLink = styled(Link)`
+  margin-left: 20px;
+`
+
+const StyledHr = styled.hr`
+  width: 300px;
+  background: orange;
+  margin: 20px auto;
+  padding: 1px;
+`
+
+const isLastPost = (array, index) => index === array.length - 1
 
 const BlogPosts = ({ data }) => {
   const allPosts = data.allContentfulBlogPost.edges // all the blog posts
@@ -35,11 +45,10 @@ const BlogPosts = ({ data }) => {
       <SEO title="Blog posts" />
       <h1>{"Here's a list of all blogposts!"}</h1>
       <div className="blogposts">
-        {allOrderedPosts.map(({ node: post }) => (
+        {allOrderedPosts.map(({ node: post }, index) => (
           <div key={post.id}>
-            <Link style={linkStyle} to={`/blogpost/${post.slug}`}>
-              {post.title}
-            </Link>
+            <StyledLink to={`/blogpost/${post.slug}`}>{post.title}</StyledLink>
+            {!isLastPost(allOrderedPosts, index) && <StyledHr />}
           </div>
         ))}
         <BackToHomepage />
