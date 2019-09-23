@@ -5,6 +5,10 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BackToHomepage from "../components/backToHomepage"
 
+const linkStyle = {
+  marginLeft: "20px",
+}
+
 const BlogPosts = ({ data }) => {
   const blogPosts = data.allContentfulBlogPost.edges
   return (
@@ -14,7 +18,9 @@ const BlogPosts = ({ data }) => {
       <div className="blogposts">
         {blogPosts.map(({ node: post }) => (
           <div key={post.id}>
-            <Link to={`/blogpost/${post.slug}`}>{post.title}</Link>
+            <Link style={linkStyle} to={`/blogpost/${post.slug}`}>
+              {post.title}
+            </Link>
           </div>
         ))}
         <BackToHomepage />

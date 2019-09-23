@@ -45,7 +45,7 @@ exports.createPages = ({ graphql, actions }) => {
         console.log("Error retrieving contentful data", result.errors)
       }
 
-      // Resolve the paths to our template
+      // Resolve the paths to our template for Contentful blog post
       const blogPostTemplate = path.resolve("./src/templates/blogpost.js")
 
       // Then for each result we create a page. Using lodash in that case / not in the example below
