@@ -12,6 +12,7 @@
     "gatsby-plugin-modal-routing": "^1.0.2",
     "gatsby-plugin-offline": "^2.2.7",
     "gatsby-plugin-react-helmet": "^3.1.4",
+    "gatsby-plugin-react-svg": "^2.1.2",
     "gatsby-plugin-sass": "^2.1.14",
     "gatsby-plugin-sharp": "^2.2.13",
     "gatsby-source-contentful": "^2.1.29",

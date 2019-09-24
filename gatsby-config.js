@@ -59,6 +59,14 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: `${__dirname}/src/svg-assets`,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-modal-routing`,
       options: {
         modalProps: {
