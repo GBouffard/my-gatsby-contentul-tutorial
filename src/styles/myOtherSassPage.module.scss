@@ -22,3 +22,73 @@
   font-size: 2rem;
   border: 5px dashed white;
 }
+
+@mixin myTransitionMixin() {
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.imageOne {
+  @include myTransitionMixin;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+}
+
+.imageTwoContainer {
+  @include myTransitionMixin;
+  position: relative;
+  width: 428px; // width of the image
+
+  outline: transparent solid 3px;
+  outline-offset: 0px;
+
+  &:hover .imageTwoOverlay {
+    opacity: 1;
+  }
+
+  &:hover .imageTwo {
+    opacity: 0.15;
+    -moz-filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+
+  &:hover {
+    outline: red solid 3px;
+    outline-offset: -50px;
+  }
+}
+
+.imageTwo {
+  @include myTransitionMixin;
+}
+
+.imageTwoOverlay {
+  @include myTransitionMixin;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.imageTwoText {
+  color: red;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

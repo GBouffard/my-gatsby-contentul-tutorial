@@ -13,6 +13,10 @@ const StyledIcon = styled(Icon)`
   &:hover {
     fill: grey;
   }
+
+  &:active {
+    fill: lightgrey;
+  }
 `
 
 const RelatedBlogContent = ({ modal, closeTo, title, image }) => (

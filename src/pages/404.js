@@ -46,6 +46,11 @@ const NotFoundPage = ({ data }) => (
       fixed={data.fixedImage.childImageSharp.fixed}
       alt={"this is my image"}
     />
+    <Img
+      style={centerImageStyle}
+      fixed={data.tacedSVGImage.childImageSharp.fixed}
+      alt={"this is my image"}
+    />
     <div style={fluidContainer}>
       <Img
         style={{ overflow: "visible" }}
@@ -76,6 +81,17 @@ export const pageQuery = graphql`
       childImageSharp {
         fluid(maxWidth: 500, quality: 100, grayscale: true) {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    tacedSVGImage: file(relativePath: { eq: "sad.png" }) {
+      childImageSharp {
+        fixed(
+          width: 250
+          height: 250
+          traceSVG: { background: "#fff", color: "#663399" }
+        ) {
+          ...GatsbyImageSharpFixed_tracedSVG
         }
       }
     }
