@@ -25,6 +25,13 @@ nb: You need to add your own environment variables in .env for YOUR_SPACE_ID & Y
 
 You can now navigate to `http://localhost:8000`
 
+## How to log in onto the hard-coded system (Not using Auth0):
+
+```
+username: GB
+password: password
+```
+
 ## Using The GraphiQL playground:
 
 the GraphiQL playground can be used at `http://localhost:8000/___graphql`
