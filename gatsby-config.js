@@ -1,6 +1,10 @@
 require("dotenv").config()
 
-const { YOUR_SPACE_ID, YOUR_CONTENT_DELIVERY_API_KEY } = process.env
+const {
+  YOUR_SPACE_ID,
+  YOUR_CONTENT_DELIVERY_API_KEY,
+  STRIPE_SECRET_KEY,
+} = process.env
 
 module.exports = {
   siteMetadata: {
@@ -28,6 +32,14 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-stripe`,
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: [`Sku`],
+        secretKey: STRIPE_SECRET_KEY,
+        downloadFiles: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

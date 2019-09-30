@@ -43,7 +43,7 @@ const IndexPage = () => (
           </Link>
         </li>
         <li>
-          <Link to="/checkout-page">Link to the Checkout page with Stripe</Link>
+          <Link to="/shop">Link to my shop page made with Stripe items</Link>
         </li>
         <li>
           {isLoggedIn() ? (

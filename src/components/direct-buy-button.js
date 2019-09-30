@@ -1,20 +1,19 @@
 import React from "react"
+import styled from "styled-components"
 
-const buttonStyles = {
-  fontSize: "13px",
-  textAlign: "center",
-  color: "#fff",
-  outline: "none",
-  padding: "12px 60px",
-  boxShadow: "2px 5px 10px rgba(0,0,0,.1)",
-  backgroundColor: "rgb(255, 178, 56)",
-  borderRadius: "6px",
-  letterSpacing: "1.5px",
-}
-const Checkout = class extends React.Component {
-  // Initialise Stripe.js with your publishable key.
-  // You can find your key in the Dashboard:
-  // https://dashboard.stripe.com/account/apikeys
+const StyledButton = styled.button`
+  font-size: 13px;
+  text-align: center;
+  color: #fff;
+  outline: none;
+  padding: 12px 60px;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 178, 56);
+  border-radius: 6px;
+  letter-spacing: 1.5px;
+`
+
+const DirectBuyButton = class extends React.Component {
   componentDidMount() {
     this.stripe = window.Stripe("pk_test_dEC9ZMkJlIbAm5XMIN4mobt800kPfoq6Ev")
   }
@@ -35,13 +34,12 @@ const Checkout = class extends React.Component {
 
   render() {
     return (
-      <button
-        style={buttonStyles}
+      <StyledButton
         onClick={event => this.redirectToCheckout(event)} //
       >
         BUY MY FAKE BOOK
-      </button>
+      </StyledButton>
     )
   }
 }
-export default Checkout
+export default DirectBuyButton

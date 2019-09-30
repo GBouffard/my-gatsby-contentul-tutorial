@@ -22,6 +22,7 @@ gatsby develop
 ```
 
 nb: You need to add your own environment variables in .env for YOUR_SPACE_ID & YOUR_CONTENT_DELIVERY_API_KEY.
+For the Stripe account, the STRIPE_SECRET_KEY also needs to be added.
 
 You can now navigate to `http://localhost:8000`
 
