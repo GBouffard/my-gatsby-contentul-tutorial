@@ -4,6 +4,8 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+import { isLoggedIn } from "../services/auth"
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
@@ -39,6 +41,18 @@ const IndexPage = () => (
           <Link to="/this-does-not-work">
             A link that does not exist and will redirect to my 404
           </Link>
+        </li>
+        <li>
+          {isLoggedIn() ? (
+            <Link to="/secret-page">
+              This is a secret page that can only be accessed if you are logged
+              in.
+            </Link>
+          ) : (
+            <span>
+              This link is not accessible because you are not logged in.
+            </span>
+          )}
         </li>
       </ul>
     </div>
