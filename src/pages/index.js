@@ -43,6 +43,9 @@ const IndexPage = () => (
           </Link>
         </li>
         <li>
+          <Link to="/checkout-page">Link to the Checkout page with Stripe</Link>
+        </li>
+        <li>
           {isLoggedIn() ? (
             <Link to="/secret-page">
               This is a secret page that can only be accessed if you are logged
