@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import styled from "styled-components"
 
-import BackToHomepage from "../components/backToHomepage"
+import BackToHomepage from "../components/back-to-homepage"
 
 const StyledDiv = styled.div`
   white-space: pre-wrap;

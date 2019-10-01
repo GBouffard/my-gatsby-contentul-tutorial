@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 
-import BackToHomepage from "../components/backToHomepage"
+import BackToHomepage from "../components/back-to-homepage"
 import myStyles from "../styles/mySassPage.module.scss"
 
 const ASassPage = () => (

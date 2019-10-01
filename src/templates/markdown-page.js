@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import PrevNext from "../components/prev-next"
-import BackToHomepage from "../components/backToHomepage"
+import BackToHomepage from "../components/back-to-homepage"
 import Share from "../components/share"
 
 export default function Template({ data, pageContext, location }) {

@@ -1,6 +1,6 @@
 import React from "react"
 
-import BackToHomepage from "../components/backToHomepage"
+import BackToHomepage from "../components/back-to-homepage"
 
 const SecretPage = () => (
   <>

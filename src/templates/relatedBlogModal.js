@@ -4,7 +4,7 @@ import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 import styled from "styled-components"
 
 import Icon from "../../src/svg-assets/x-icon.svg"
-import BackToHomepage from "../components/backToHomepage"
+import BackToHomepage from "../components/back-to-homepage"
 
 const StyledIcon = styled(Icon)`
   float: right;

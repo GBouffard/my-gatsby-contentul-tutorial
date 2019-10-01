@@ -2,7 +2,7 @@ import React from "react"
 import { navigate } from "gatsby"
 
 import { handleLogin } from "../services/auth"
-import BackToHomepage from "../components/backToHomepage"
+import BackToHomepage from "../components/back-to-homepage"
 
 class Login extends React.Component {
   state = {

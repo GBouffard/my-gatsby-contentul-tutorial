@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
-import BackToHomepage from "../components/backToHomepage"
+import BackToHomepage from "../components/back-to-homepage"
 import myStyles from "../styles/myOtherSassPage.module.scss"
 
 /* Not adding more images animations but found some cool ones here:
