@@ -15,7 +15,7 @@ const StyledButton = styled.button`
 
 const DirectBuyButton = class extends React.Component {
   componentDidMount() {
-    this.stripe = window.Stripe("pk_test_dEC9ZMkJlIbAm5XMIN4mobt800kPfoq6Ev")
+    this.stripe = window.Stripe(process.env.STRIPE_PUBLISHABLE_KEY)
   }
 
   async redirectToCheckout(event) {
@@ -23,7 +23,7 @@ const DirectBuyButton = class extends React.Component {
 
     const { error } = await this.stripe.redirectToCheckout({
       items: [{ sku: "sku_FuBBYL1EB4qnka", quantity: 1 }],
-      successUrl: `http://localhost:8000/page-2/`,
+      successUrl: `http://localhost:8000/checkout-success/`,
       cancelUrl: `http://localhost:8000/`,
     })
 
@@ -34,9 +34,7 @@ const DirectBuyButton = class extends React.Component {
 
   render() {
     return (
-      <StyledButton
-        onClick={event => this.redirectToCheckout(event)} //
-      >
+      <StyledButton onClick={event => this.redirectToCheckout(event)}>
         BUY MY FAKE BOOK
       </StyledButton>
     )
