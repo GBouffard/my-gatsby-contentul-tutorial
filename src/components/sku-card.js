@@ -94,10 +94,11 @@ const SkuCard = class extends React.Component {
   }
 
   render() {
-    const sku = this.props.sku
+    const { sku, addToCart, cart } = this.props
     const { id, image, attributes, price, currency } = sku
-    const isCartpage = !!this.props.addToCart
-    const itemInCart = this.props.cart.find(el => el["sku"] === sku.id)
+
+    const isCartpage = !!addToCart
+    const itemInCart = cart && cart.find(el => el["sku"] === sku.id)
     const itemQuantity = (itemInCart && itemInCart["quantity"]) || 0
 
     return (
