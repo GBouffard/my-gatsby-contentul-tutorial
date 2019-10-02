@@ -1,8 +1,14 @@
-require("dotenv").config()
+// For .env
+// require("dotenv").config()
+
+// For .env.development and .env.production
+// require("dotenv").config({
+//   path: `.env.${process.env.NODE_ENV}`,
+// })
 
 const {
-  YOUR_SPACE_ID,
-  YOUR_CONTENT_DELIVERY_API_KEY,
+  CONTENTFUL_SPACE_ID,
+  CONTENTFUL_DELIVERY_API_KEY,
   STRIPE_SECRET_KEY,
 } = process.env
 
@@ -67,8 +73,8 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: YOUR_SPACE_ID,
-        accessToken: YOUR_CONTENT_DELIVERY_API_KEY,
+        spaceId: CONTENTFUL_SPACE_ID,
+        accessToken: CONTENTFUL_DELIVERY_API_KEY,
       },
     },
     {
