@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import styled from "styled-components"
 
 const StyledCard = styled.div`
@@ -32,6 +32,15 @@ const StyledButton = styled.button`
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   letter-spacing: 1.5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const CartStyledButton = styled(StyledButton)`
+  color: darkgoldenrod;
+  background: lightyellow;
 `
 
 const formatPrice = (amount, currency) => {
@@ -47,6 +56,23 @@ const formatPrice = (amount, currency) => {
 }
 
 const SkuCard = class extends React.Component {
+  state = {
+    disabled: false,
+    buttonText: "ADD TO CART",
+    paymentMessage: "",
+  }
+
+  resetButton() {
+    this.setState({ disabled: false, buttonText: "ADD ONE MORE" })
+  }
+
+  addToCart(event, skuId, quantity = 1) {
+    event.preventDefault()
+    this.setState({ disabled: true, buttonText: "ADDED TO CART" })
+    this.props.addToCart(skuId)
+    setTimeout(this.resetButton.bind(this), 500)
+  }
+
   async redirectToCheckout(event, skuid, quantity = 1) {
     event.preventDefault()
 
@@ -64,15 +90,29 @@ const SkuCard = class extends React.Component {
   render() {
     const sku = this.props.sku
     const { id, image, attributes, price, currency } = sku
+    const isCartpage = !!this.props.addToCart
 
     return (
       <StyledCard>
         <StyledName>Item: {attributes.name}</StyledName>
         {image && <img src={image} alt={attributes.name} />}
         <StyledPrice>{`Price: ${formatPrice(price, currency)}`}</StyledPrice>
-        <StyledButton onClick={event => this.redirectToCheckout(event, id)}>
-          BUY ME
-        </StyledButton>
+
+        {isCartpage ? (
+          <Fragment>
+            <CartStyledButton
+              onClick={event => this.addToCart(event, sku.id)}
+              disabled={this.state.disabled}
+            >
+              {this.state.buttonText}
+            </CartStyledButton>
+            {this.state.paymentMessage}
+          </Fragment>
+        ) : (
+          <StyledButton onClick={event => this.redirectToCheckout(event, id)}>
+            DIRECT BUY
+          </StyledButton>
+        )}
       </StyledCard>
     )
   }

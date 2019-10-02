@@ -22,7 +22,7 @@ const DirectBuyButton = class extends React.Component {
     event.preventDefault()
 
     const { error } = await this.stripe.redirectToCheckout({
-      items: [{ sku: "sku_FuBBYL1EB4qnka", quantity: 1 }],
+      items: [{ sku: "sku_FuBBYL1EB4qnka", quantity: 1 }], // sku of my book
       successUrl: `http://localhost:8000/checkout-success/`,
       cancelUrl: `http://localhost:8000/`,
     })

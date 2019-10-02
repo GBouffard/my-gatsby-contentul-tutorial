@@ -109,6 +109,11 @@ exports.createPages = ({ graphql, actions }) => {
           }, // Anything we passed inside the context object can be available as a props.pageContext.
         })
       })
+
+      createPage({
+        path: "/cart",
+        component: path.resolve(`src/components/Cart.js`),
+      })
     })
     .catch(error => {
       console.log("Error retrieving contentful data", error)

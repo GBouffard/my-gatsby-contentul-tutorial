@@ -42,7 +42,12 @@ class Skus extends Component {
         render={({ skus }) => (
           <StyledGrid>
             {skus.edges.map(({ node: sku }) => (
-              <SkuCard key={sku.id} sku={sku} stripe={this.state.stripe} />
+              <SkuCard
+                {...this.props}
+                key={sku.id}
+                sku={sku}
+                stripe={this.state.stripe}
+              />
             ))}
           </StyledGrid>
         )}
