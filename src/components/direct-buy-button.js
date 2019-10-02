@@ -15,7 +15,7 @@ const StyledButton = styled.button`
 
 const DirectBuyButton = class extends React.Component {
   componentDidMount() {
-    this.stripe = window.Stripe(process.env.STRIPE_PUBLISHABLE_KEY)
+    this.stripe = window.Stripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
   }
 
   async redirectToCheckout(event) {

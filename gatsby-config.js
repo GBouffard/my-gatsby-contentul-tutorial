@@ -7,9 +7,9 @@
 // })
 
 const {
-  CONTENTFUL_SPACE_ID,
-  CONTENTFUL_DELIVERY_API_KEY,
-  STRIPE_SECRET_KEY,
+  GATSBY_CONTENTFUL_SPACE_ID,
+  GATSBY_CONTENTFUL_DELIVERY_API_KEY,
+  GATSBY_STRIPE_SECRET_KEY,
 } = process.env
 
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
       resolve: `gatsby-source-stripe`,
       options: {
         objects: [`Sku`],
-        secretKey: STRIPE_SECRET_KEY,
+        secretKey: GATSBY_STRIPE_SECRET_KEY,
         downloadFiles: true,
       },
     },
@@ -73,8 +73,8 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: CONTENTFUL_SPACE_ID,
-        accessToken: CONTENTFUL_DELIVERY_API_KEY,
+        spaceId: GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken: GATSBY_CONTENTFUL_DELIVERY_API_KEY,
       },
     },
     {

@@ -15,7 +15,7 @@ class Skus extends Component {
   }
 
   componentDidMount() {
-    const stripe = window.Stripe(process.env.STRIPE_PUBLISHABLE_KEY)
+    const stripe = window.Stripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
     this.setState({ stripe })
   }
 

@@ -16,7 +16,7 @@ const StyledCheckoutButton = styled.button`
 
 const CheckoutButton = class extends React.Component {
   componentDidMount() {
-    this.stripe = window.Stripe(process.env.STRIPE_PUBLISHABLE_KEY, {
+    this.stripe = window.Stripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY, {
       betas: ["checkout_beta_4"],
     })
   }
