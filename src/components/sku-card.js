@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import styled from "styled-components"
 
 const StyledCard = styled.div`
@@ -43,6 +43,13 @@ const CartStyledButton = styled(StyledButton)`
   background: lightyellow;
 `
 
+const StyledQuantity = styled.div`
+  color: rgb(0, 0, 0, 0.8);
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 10px;
+`
+
 const formatPrice = (amount, currency) => {
   let price = (amount / 100).toFixed(2)
 
@@ -59,14 +66,13 @@ const SkuCard = class extends React.Component {
   state = {
     disabled: false,
     buttonText: "ADD TO CART",
-    paymentMessage: "",
   }
 
   resetButton() {
     this.setState({ disabled: false, buttonText: "ADD ONE MORE" })
   }
 
-  addToCart(event, skuId, quantity = 1) {
+  addToCart(event, skuId) {
     event.preventDefault()
     this.setState({ disabled: true, buttonText: "ADDED TO CART" })
     this.props.addToCart(skuId)
@@ -91,6 +97,8 @@ const SkuCard = class extends React.Component {
     const sku = this.props.sku
     const { id, image, attributes, price, currency } = sku
     const isCartpage = !!this.props.addToCart
+    const itemInCart = this.props.cart.find(el => el["sku"] === sku.id)
+    const itemQuantity = (itemInCart && itemInCart["quantity"]) || 0
 
     return (
       <StyledCard>
@@ -99,15 +107,15 @@ const SkuCard = class extends React.Component {
         <StyledPrice>{`Price: ${formatPrice(price, currency)}`}</StyledPrice>
 
         {isCartpage ? (
-          <Fragment>
+          <div>
+            <StyledQuantity>{`Items in cart: ${itemQuantity}`}</StyledQuantity>
             <CartStyledButton
               onClick={event => this.addToCart(event, sku.id)}
               disabled={this.state.disabled}
             >
               {this.state.buttonText}
             </CartStyledButton>
-            {this.state.paymentMessage}
-          </Fragment>
+          </div>
         ) : (
           <StyledButton onClick={event => this.redirectToCheckout(event, id)}>
             DIRECT BUY

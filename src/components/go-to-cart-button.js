@@ -1,5 +1,5 @@
 import React from "react"
-import { navigateTo } from "gatsby"
+import { navigate } from "gatsby"
 import styled from "styled-components"
 
 const CartStyledButton = styled.button`
@@ -18,7 +18,7 @@ const CartStyledButton = styled.button`
 `
 
 const GoToCartButton = () => (
-  <CartStyledButton onClick={() => navigateTo("/cart")}>
+  <CartStyledButton onClick={() => navigate("/cart")}>
     Go To Cart
   </CartStyledButton>
 )

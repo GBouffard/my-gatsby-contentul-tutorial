@@ -3,7 +3,6 @@ import styled from "styled-components"
 
 const StyledCheckoutButton = styled.button`
   display: flex;
-  margin: 20px auto 50px;
   color: ${props => (props.disabled ? "grey" : "palegreen")};
   background: ${props => (props.disabled ? "lightgrey" : "forestgreen")};
   padding: 12px 40px;
@@ -36,13 +35,14 @@ const CheckoutButton = class extends React.Component {
   }
 
   render() {
-    const isCartEmpty = this.props.cart.length
+    const hasItemsInCart = !!this.props.cart.length
+
     return (
       <StyledCheckoutButton
         onClick={event => this.redirectToCheckout(event)}
-        disabled={!isCartEmpty}
+        disabled={!hasItemsInCart}
       >
-        {isCartEmpty ? "GO TO CHECKOUT" : "CART IS EMPTY"}
+        {hasItemsInCart ? "GO TO CHECKOUT" : "CART IS EMPTY"}
       </StyledCheckoutButton>
     )
   }
