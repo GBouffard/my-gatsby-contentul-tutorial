@@ -16,7 +16,8 @@ const StyledButtonsContainer = styled.div`
 const Cart = class extends React.Component {
   constructor() {
     super()
-    this.addToCart = this.addToCart.bind(this)
+    this.addItem = this.addItem.bind(this)
+    this.removeItem = this.removeItem.bind(this)
     this.clearCart = this.clearCart.bind(this)
     this.state = {
       cart: [],
@@ -30,21 +31,31 @@ const Cart = class extends React.Component {
     }
   }
 
-  addToCart(newItem) {
-    let itemExisted = false
+  addItem(addedItemSku) {
+    let isAlreadyPresentInCart = false
     let updatedCart = this.state.cart.map(item => {
-      if (newItem === item.sku) {
-        itemExisted = true
+      if (addedItemSku === item.sku) {
+        isAlreadyPresentInCart = true
         return { sku: item.sku, quantity: ++item.quantity }
       } else {
         return item
       }
     })
-    if (!itemExisted) {
-      updatedCart = [...updatedCart, { sku: newItem, quantity: 1 }]
-    }
-    this.setState({ cart: updatedCart })
 
+    if (!isAlreadyPresentInCart) {
+      updatedCart = [...updatedCart, { sku: addedItemSku, quantity: 1 }]
+    }
+
+    this.setState({ cart: updatedCart })
+    localStorage.setItem("cart_items", JSON.stringify(updatedCart))
+  }
+
+  removeItem(newItem) {
+    const updatedCart = this.state.cart.map(item =>
+      newItem === item.sku ? { sku: item.sku, quantity: --item.quantity } : item
+    )
+
+    this.setState({ cart: updatedCart })
     localStorage.setItem("cart_items", JSON.stringify(updatedCart))
   }
 
@@ -57,8 +68,9 @@ const Cart = class extends React.Component {
     return (
       <Fragment>
         {React.cloneElement(<Skus />, {
-          addToCart: this.addToCart,
           cart: this.state.cart,
+          addItem: this.addItem,
+          removeItem: this.removeItem,
         })}
         <StyledButtonsContainer>
           <CheckoutButton cart={this.state.cart} />
