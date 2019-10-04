@@ -51,9 +51,13 @@ const Cart = class extends React.Component {
   }
 
   removeItem(newItem) {
-    const updatedCart = this.state.cart.map(item =>
-      newItem === item.sku ? { sku: item.sku, quantity: --item.quantity } : item
-    )
+    const updatedCart = this.state.cart
+      .map(item =>
+        newItem === item.sku
+          ? { sku: item.sku, quantity: --item.quantity }
+          : item
+      )
+      .filter(item => item.quantity !== 0)
 
     this.setState({ cart: updatedCart })
     localStorage.setItem("cart_items", JSON.stringify(updatedCart))
@@ -67,11 +71,12 @@ const Cart = class extends React.Component {
   render() {
     return (
       <Fragment>
-        {React.cloneElement(<Skus />, {
-          cart: this.state.cart,
-          addItem: this.addItem,
-          removeItem: this.removeItem,
-        })}
+        <Skus
+          cart={this.state.cart}
+          addItem={this.addItem}
+          removeItem={this.removeItem}
+        />
+
         <StyledButtonsContainer>
           <CheckoutButton cart={this.state.cart} />
           <ClearCartButton
@@ -79,6 +84,7 @@ const Cart = class extends React.Component {
             hasItemsInCart={!!this.state.cart.length}
           />
         </StyledButtonsContainer>
+
         <BackToHomepage />
       </Fragment>
     )

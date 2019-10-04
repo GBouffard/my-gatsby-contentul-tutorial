@@ -81,41 +81,48 @@ const SkuCard = ({ cart, sku, stripe, addItem, removeItem }) => {
   const { id, image, attributes, price, currency } = sku
   const isCartpage = !!cart
 
-  const itemInCart = cart && cart.find(el => el["sku"] === sku.id)
-  const itemQuantity = (itemInCart && itemInCart["quantity"]) || 0
+  const getItemFromCart = () => cart && cart.find(item => item.sku === sku.id)
+  const item = getItemFromCart()
+  const itemQuantity = (item && item.quantity) || 0
 
-  const [addDisabled, setAddDisabled] = useState(false)
   const [addButtonText, setAddButtonText] = useState("ADD ITEM")
   const [removeButtonText, setRemoveButtonText] = useState("REMOVE ITEM")
 
   useEffect(() => {
-    if (itemQuantity > 0) {
-      setAddButtonText("ADD ANOTHER")
+    if (itemQuantity === 0 && removeButtonText !== "-1") {
+      setRemoveButtonText("REMOVE ITEM")
+    }
+
+    if (addButtonText !== "+1") {
+      const updatedItem = getItemFromCart()
+      const hasStillItemsInCart = updatedItem && !!updatedItem.quantity
+      setAddButtonText(`ADD ${hasStillItemsInCart ? "ANOTHER" : "ITEM"}`)
     }
   })
 
-  const resetRemoveButton = () => {
-    setRemoveButtonText("REMOVE ANOTHER")
-  }
-
-  const resetAddButton = () => {
-    setAddDisabled(false)
+  const updateAddButtonState = () => {
     setAddButtonText("ADD ANOTHER")
   }
 
   const addToCart = (event, skuId) => {
     event.preventDefault()
-    setAddDisabled(true)
-    setAddButtonText("ADDED TO CART")
+    setAddButtonText("+1")
     addItem(skuId)
-    setTimeout(resetAddButton, 500)
+    setTimeout(updateAddButtonState, 500)
+  }
+
+  const updateBothButtonState = () => {
+    const updatedItem = getItemFromCart()
+    const hasStillItemsInCart = updatedItem && !!updatedItem.quantity
+    setRemoveButtonText(`REMOVE ${hasStillItemsInCart ? "ANOTHER" : "ITEM"}`)
+    setAddButtonText(`ADD ${hasStillItemsInCart ? "ANOTHER" : "ITEM"}`)
   }
 
   const removeFromCart = (event, skuId) => {
     event.preventDefault()
-    setRemoveButtonText("REMOVED FROM CART")
+    setRemoveButtonText("-1")
     removeItem(skuId)
-    setTimeout(resetRemoveButton, 500)
+    setTimeout(updateBothButtonState, 500)
   }
 
   const redirectToCheckout = async (event, skuid, quantity = 1) => {
@@ -141,10 +148,7 @@ const SkuCard = ({ cart, sku, stripe, addItem, removeItem }) => {
       {isCartpage ? (
         <StyledCartButtonsContainer>
           <StyledQuantity>{`Items in cart: ${itemQuantity}`}</StyledQuantity>
-          <AddToCartStyledButton
-            onClick={event => addToCart(event, sku.id)}
-            disabled={addDisabled}
-          >
+          <AddToCartStyledButton onClick={event => addToCart(event, sku.id)}>
             {addButtonText}
           </AddToCartStyledButton>
           <RemoveFromCartStyledButton
