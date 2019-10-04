@@ -18,6 +18,7 @@ const Cart = class extends React.Component {
     super()
     this.addItem = this.addItem.bind(this)
     this.removeItem = this.removeItem.bind(this)
+    this.removeAllItem = this.removeAllItem.bind(this)
     this.clearCart = this.clearCart.bind(this)
     this.state = {
       cart: [],
@@ -50,14 +51,23 @@ const Cart = class extends React.Component {
     localStorage.setItem("cart_items", JSON.stringify(updatedCart))
   }
 
-  removeItem(newItem) {
+  removeItem(removedItemSku) {
     const updatedCart = this.state.cart
       .map(item =>
-        newItem === item.sku
+        removedItemSku === item.sku
           ? { sku: item.sku, quantity: --item.quantity }
           : item
       )
       .filter(item => item.quantity !== 0)
+
+    this.setState({ cart: updatedCart })
+    localStorage.setItem("cart_items", JSON.stringify(updatedCart))
+  }
+
+  removeAllItem(removedItemSku) {
+    const updatedCart = this.state.cart.filter(
+      item => removedItemSku !== item.sku
+    )
 
     this.setState({ cart: updatedCart })
     localStorage.setItem("cart_items", JSON.stringify(updatedCart))
@@ -75,6 +85,7 @@ const Cart = class extends React.Component {
           cart={this.state.cart}
           addItem={this.addItem}
           removeItem={this.removeItem}
+          removeAllItem={this.removeAllItem}
         />
 
         <StyledButtonsContainer>

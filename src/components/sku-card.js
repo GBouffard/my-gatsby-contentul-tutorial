@@ -34,7 +34,7 @@ const DirectBuyButton = styled.button`
   letter-spacing: 1.5px;
 
   &:hover {
-    cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
+    cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   }
 `
 
@@ -51,18 +51,24 @@ const StyledQuantity = styled.div`
   padding: 10px;
 `
 
-const AddToCartStyledButton = styled(DirectBuyButton)`
-  color: darkgoldenrod;
-  background: lightyellow;
+const StyledAddRemoveButton = styled(DirectBuyButton)`
   letter-spacing: normal;
   margin: 5px 0;
 `
 
-const RemoveFromCartStyledButton = styled(DirectBuyButton)`
-  color: ${props => (props.disabled ? "grey" : "darkred")};
-  background: ${props => (props.disabled ? "lightgrey" : "lightpink")};
-  letter-spacing: normal;
-  margin: 5px 0;
+const StyledAddButton = styled(StyledAddRemoveButton)`
+  color: darkgoldenrod;
+  background: lightyellow;
+`
+
+const StyledRemoveButton = styled(StyledAddRemoveButton)`
+  color: ${({ disabled }) => (disabled ? "grey" : "darkred")};
+  background: ${({ disabled }) => (disabled ? "lightgrey" : "lightpink")};
+`
+
+const StyledRemoveAllButton = styled(StyledAddRemoveButton)`
+  color: ${({ disabled }) => (disabled ? "grey" : "white")};
+  background: ${({ disabled }) => (disabled ? "lightgrey" : "black")};
 `
 
 const formatPrice = (amount, currency) => {
@@ -77,7 +83,7 @@ const formatPrice = (amount, currency) => {
   return numberFormat.format(price)
 }
 
-const SkuCard = ({ cart, sku, stripe, addItem, removeItem }) => {
+const SkuCard = ({ cart, sku, stripe, addItem, removeItem, removeAllItem }) => {
   const { id, image, attributes, price, currency } = sku
   const isCartpage = !!cart
 
@@ -85,8 +91,10 @@ const SkuCard = ({ cart, sku, stripe, addItem, removeItem }) => {
   const item = getItemFromCart()
   const itemQuantity = (item && item.quantity) || 0
 
+  // the buttons logic is a bit mad but in case we want such options it works.
   const [addButtonText, setAddButtonText] = useState("ADD ITEM")
   const [removeButtonText, setRemoveButtonText] = useState("REMOVE ITEM")
+  const [removeAllButtonText, setRemoveAllButtonText] = useState("REMOVE ALL")
 
   useEffect(() => {
     if (itemQuantity === 0 && removeButtonText !== "-1") {
@@ -125,6 +133,19 @@ const SkuCard = ({ cart, sku, stripe, addItem, removeItem }) => {
     setTimeout(updateBothButtonState, 500)
   }
 
+  const updateRemoveAllButtonState = () => {
+    setRemoveAllButtonText("REMOVE ALL")
+  }
+
+  const removeAllFromCart = (event, skuId) => {
+    event.preventDefault()
+    const updatedItem = getItemFromCart()
+    const removedQuantity = updatedItem && updatedItem.quantity
+    setRemoveAllButtonText(`-${removedQuantity}`)
+    removeAllItem(skuId)
+    setTimeout(updateRemoveAllButtonState, 500)
+  }
+
   const redirectToCheckout = async (event, skuid, quantity = 1) => {
     event.preventDefault()
 
@@ -148,15 +169,24 @@ const SkuCard = ({ cart, sku, stripe, addItem, removeItem }) => {
       {isCartpage ? (
         <StyledCartButtonsContainer>
           <StyledQuantity>{`Items in cart: ${itemQuantity}`}</StyledQuantity>
-          <AddToCartStyledButton onClick={event => addToCart(event, sku.id)}>
+
+          <StyledAddButton onClick={event => addToCart(event, sku.id)}>
             {addButtonText}
-          </AddToCartStyledButton>
-          <RemoveFromCartStyledButton
+          </StyledAddButton>
+
+          <StyledRemoveButton
             onClick={event => removeFromCart(event, sku.id)}
             disabled={itemQuantity <= 0}
           >
             {removeButtonText}
-          </RemoveFromCartStyledButton>
+          </StyledRemoveButton>
+
+          <StyledRemoveAllButton
+            onClick={event => removeAllFromCart(event, sku.id)}
+            disabled={itemQuantity <= 0}
+          >
+            {removeAllButtonText}
+          </StyledRemoveAllButton>
         </StyledCartButtonsContainer>
       ) : (
         <DirectBuyButton onClick={event => redirectToCheckout(event, id)}>
