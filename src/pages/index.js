@@ -10,7 +10,13 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <div className="home">
-      <h1>Hello World</h1>
+      <div className="home-main-div">
+        <div className="home-main-div__auth-info">👆 Auth0 Authentication</div>
+        <h1>Hello World</h1>
+        <div className="home-main-div__auth-info">
+          Hard-coded authentication ☝️
+        </div>
+      </div>
       <p>Welcome to my first Gatsby + Contentul + Netlify tutorial</p>
       <ul
         style={{
@@ -53,7 +59,8 @@ const IndexPage = () => (
             </Link>
           ) : (
             <span>
-              This link is not accessible because you are not logged in.
+              This link is not accessible because you are not logged in
+              (Hard-coded auth).
             </span>
           )}
         </li>

@@ -642,6 +642,18 @@ header div h1 {
   margin: auto;
 }
 
+.home-main-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-main-div__auth-info {
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: darkred;
+}
+
 .blogpost {
   font-size: 18px;
   width: 35em;
