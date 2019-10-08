@@ -6,10 +6,10 @@ import { getUser, isLoggedIn, logout } from "../services/auth"
 
 const StyledContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   position: absolute;
-  right: 0;
+  width: 100%;
+  justify-content: space-between;
+  top: 8px;
 `
 
 const StyledSpan = styled.span`
@@ -34,34 +34,45 @@ const StyledAnchor = styled.a`
   margin: 0 5px;
 `
 
+const StyledNav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 5px;
+`
+
 export default () => {
-  const message = isLoggedIn()
-    ? `Hello, ${getUser().name}`
+  const hardCodedMessage = isLoggedIn()
+    ? `Hello, ${getUser().hardCodedName}`
     : "You are not logged in"
 
   return (
     <StyledContainer>
-      <StyledSpan>{message}</StyledSpan>
-      <nav>
-        <StyledLink to="/">Home</StyledLink>
+      <StyledNav>
+        <StyledSpan>{hardCodedMessage}</StyledSpan>
+        <span>
+          <StyledLink to="/">Home</StyledLink>
 
-        {isLoggedIn() ? (
-          <Fragment>
-            <StyledLink to="/profile">Profile</StyledLink>
-            <StyledAnchor
-              href="/"
-              onClick={event => {
-                event.preventDefault()
-                logout(() => navigate(`/`))
-              }}
-            >
-              Logout
-            </StyledAnchor>
-          </Fragment>
-        ) : (
-          <StyledLink to="/login">Login</StyledLink>
-        )}
-      </nav>
+          {isLoggedIn() ? (
+            <Fragment>
+              <StyledLink to="/profile">Profile</StyledLink>
+              <StyledAnchor
+                href="/"
+                onClick={event => {
+                  event.preventDefault()
+                  logout(() => navigate(`/`))
+                }}
+              >
+                Logout
+              </StyledAnchor>
+            </Fragment>
+          ) : (
+            <StyledLink to="/login">Login</StyledLink>
+          )}
+        </span>
+      </StyledNav>
     </StyledContainer>
   )
 }

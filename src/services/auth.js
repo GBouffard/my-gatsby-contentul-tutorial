@@ -1,3 +1,4 @@
+// because this is hard-coded, prefixing all variables with hardCoded
 export const isBrowser = () => typeof window !== "undefined"
 
 export const getUser = () =>
@@ -12,9 +13,9 @@ export const handleLogin = ({ username, password }) => {
   // this is whee the real logic to handle authentication should be used.
   if (username === `GB` && password === `password`) {
     setUser({
-      username: `GB`,
-      name: `Guillaume`,
-      email: `guillaume@fake-email.com`,
+      hardCodedUsername: `GB`,
+      hardCodedName: `Guillaume`,
+      hardCodedEmail: `guillaume@fake-email.com`,
     })
     return true
   }
@@ -23,7 +24,7 @@ export const handleLogin = ({ username, password }) => {
 
 export const isLoggedIn = () => {
   const user = getUser()
-  return !!user.username
+  return !!user.hardCodedUsername
 }
 
 export const logout = callback => {

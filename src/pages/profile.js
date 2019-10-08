@@ -7,8 +7,8 @@ const Profile = () => (
   <>
     <h1>Your profile</h1>
     <ul>
-      <li>Name: {getUser().name}</li>
-      <li>E-mail: {getUser().email}</li>
+      <li>Name: {getUser().hardCodedName}</li>
+      <li>E-mail: {getUser().hardCodedEmail}</li>
     </ul>
     <BackToHomepage />
   </>
