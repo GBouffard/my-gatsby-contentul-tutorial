@@ -11,10 +11,18 @@ const IndexPage = () => (
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <div className="home">
       <div className="home-main-div">
-        <div className="home-main-div__auth-info">👆 Auth0 Authentication</div>
+        <div className="home-main-div__auth-info">
+          <span role="img" description="up emoji 2" aria-label="up emoji 2">
+            👆
+          </span>
+          Auth0 Authentication
+        </div>
         <h1>Hello World</h1>
         <div className="home-main-div__auth-info">
-          Hard-coded authentication ☝️
+          Hard-coded authentication
+          <span role="img" description="up emoji 2" aria-label="up emoji 2">
+            ☝️
+          </span>
         </div>
       </div>
       <p>Welcome to my first Gatsby + Contentul + Netlify tutorial</p>

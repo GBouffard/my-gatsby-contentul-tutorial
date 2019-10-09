@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import { Link, navigate } from "gatsby"
 import styled from "styled-components"
 
+// This is the auth of hard-coded auth
 import { getUser, isLoggedIn, logout } from "../services/auth"
 
 const StyledContainer = styled.div`
@@ -44,12 +45,19 @@ const StyledNav = styled.nav`
 `
 
 export default () => {
+  const nickname = localStorage.getItem("nickname")
+  const auth0Message = nickname ? `Hello ${nickname}` : "You are not logged in"
+
   const hardCodedMessage = isLoggedIn()
     ? `Hello, ${getUser().hardCodedName}`
     : "You are not logged in"
 
   return (
     <StyledContainer>
+      <StyledNav>
+        <StyledSpan>{auth0Message}</StyledSpan>
+        <StyledLink to="/account">Go to your account</StyledLink>
+      </StyledNav>
       <StyledNav>
         <StyledSpan>{hardCodedMessage}</StyledSpan>
         <span>
