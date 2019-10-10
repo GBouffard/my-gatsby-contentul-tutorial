@@ -8,17 +8,14 @@ notes:
 
 - as weird as it seems there are 2 authentication system: one hard-coded, one with auth0.
 - The design of the site does not matter; only functionalities do.
-- The site is not auto-deployed anymore. No deploy should be made anyore because...
+- The site is not auto-deployed anymore. No deploy should be made anymore because...
 - ...the Contentful space for this site has been deleted.
 
 [Deploy preview](https://gbouffard-my-gatsby-contentul-tutorial.netlify.com/)
 
-No deploy should be made to that repo anymore.
-and I have stopped the Netlify auto-deploy.
-
 I used these tutorials:
 
-- [Gatsbyjs tutorials](https://www.gatsbyjs.org/tutorial/)
+- [Gatsby tutorials](https://www.gatsbyjs.org/tutorial/)
 - [Content management with Gatsby, Netlify and Contentful](https://dev.to/thebabscraig/content-management-with-gatsby-netlify-and-contentful-3kbg)
 - [Gatsby advanced blog tutorial](https://reactgo.com/gatsby-advanced-blog-tutorial)
 - [Using Gatsby with css modules and scss](https://medium.com/@PostgradExpat/using-gatsby-with-css-modules-and-scss-7e75a05533a4)
