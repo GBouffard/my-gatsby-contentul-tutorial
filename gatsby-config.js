@@ -37,6 +37,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-stripe`,
     {
       resolve: `gatsby-source-stripe`,

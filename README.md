@@ -11,7 +11,7 @@ I used these tutorials:
 - [Content management with Gatsby, Netlify and Contentful](https://dev.to/thebabscraig/content-management-with-gatsby-netlify-and-contentful-3kbg)
 - [Gatsby advanced blog tutorial](https://reactgo.com/gatsby-advanced-blog-tutorial)
 - [Using Gatsby with css modules and scss](https://medium.com/@PostgradExpat/using-gatsby-with-css-modules-and-scss-7e75a05533a4)
-- [Gatsby E-Commerce Tutorial])(https://www.gatsbyjs.org/tutorial/ecommerce-tutorial/)
+- [Gatsby E-Commerce Tutorial](https://www.gatsbyjs.org/tutorial/ecommerce-tutorial/)
 - [Securing Gatsby with Auth0](https://auth0.com/blog/securing-gatsby-with-auth0/)
 - [Gatbsy mistakes](https://jenniferwadella.com/blog/all-the-dumb-mistakes-i-made-building-my-first-gatsby-site)
 
