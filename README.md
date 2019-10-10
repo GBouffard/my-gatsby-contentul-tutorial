@@ -1,9 +1,11 @@
 :ribbon: Gatsby :heavy_plus_sign: Contentul :heavy_plus_sign: Netlify = :heart: :ribbon:
+:tophat: + Stripe + Auth0 :tophat:
 
 This is my first Gatsby + Contentul + Netlify tutorial built from scratch.
-I also added a shop with Sprite and an authentication system.
+I also added a shop with Sprite and 2 authentication system: one hard-coded, one with auth0.
 
 [Deploy preview](https://gbouffard-my-gatsby-contentul-tutorial.netlify.com/)
+No deploy should be made to that repo anymore. The Contentful Space has been deleted and I have stopped the Netlify auto-deploy.
 
 I used these tutorials:
 
@@ -17,6 +19,8 @@ I used these tutorials:
 
 ## How to run it locally:
 
+(should not work anymore because Contentful data has been deleted)
+
 ```
 git clone git@github.com:GBouffard/my-gatsby-contentul-tutorial.git
 cd my-gatsby-contentul-tutorial
@@ -24,7 +28,7 @@ yarn
 gatsby develop
 ```
 
-nb: You need to add your own YOUR_SPACE_ID & YOUR_CONTENT_DELIVERY_API_KEY in .env.
+nb: in theory, you'd need to add your own YOUR_SPACE_ID & YOUR_CONTENT_DELIVERY_API_KEY in .env.
 To use Stripe your the GATSBY_STRIPE_PUBLISHABLE_KEY and GATSBY_STRIPE_SECRET_KEY also need to be in the environment.
 
 You can now navigate to `http://localhost:8000`
@@ -34,6 +38,19 @@ You can now navigate to `http://localhost:8000`
 ```
 username: GB
 password: password
+```
+
+## How to log in onto Auth0 system:
+
+Simply with an email and password
+
+## How to simulate payment in Stripe:
+
+The following fake cards are available and the shop used is still the test shop:
+
+```
+4242 4242 4242 4242        // visa
+5555 5555 5555 4444        // Mastercard
 ```
 
 ## Using The GraphiQL playground:
@@ -64,6 +81,38 @@ Example of query:
 
 ## Screenshots:
 
-![](screenshots/contentful-screenshot1.png)
+![](screenshots/1.png)
 
-![](screenshots/contentful-screenshot2.png)
+![](screenshots/2.png)
+
+![](screenshots/3.png)
+
+![](screenshots/4.png)
+
+![](screenshots/5.png)
+
+![](screenshots/6.png)
+
+![](screenshots/7.png)
+
+![](screenshots/8.png)
+
+![](screenshots/9.png)
+
+![](screenshots/10.png)
+
+![](screenshots/11.png)
+
+![](screenshots/12.png)
+
+![](screenshots/13.png)
+
+![](screenshots/14.png)
+
+![](screenshots/15.png)
+
+![](screenshots/16.png)
+
+![](screenshots/17.png)
+
+![](screenshots/18.png)
