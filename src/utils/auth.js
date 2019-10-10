@@ -79,3 +79,10 @@ export const logout = () => {
   localStorage.removeItem("nickname")
   auth.logout()
 }
+
+// workaround Gatsby WebpackError: ReferenceError: localStorage is not defined
+export const getStorage = () => {
+  if (typeof window !== "undefined") return window.localStorage
+  if (typeof localStorage !== "undefined") return localStorage
+  return false
+}

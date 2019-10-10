@@ -5,6 +5,8 @@ import styled from "styled-components"
 // This is the auth of hard-coded auth
 import { getUser, isLoggedIn, logout } from "../services/auth"
 
+import { getStorage, isAuthenticated } from "../utils/auth"
+
 const StyledContainer = styled.div`
   display: flex;
   position: absolute;
@@ -45,7 +47,9 @@ const StyledNav = styled.nav`
 `
 
 export default () => {
-  const nickname = localStorage.getItem("nickname")
+  const storage = getStorage()
+  let nickname = storage && storage.getItem("nickname")
+  nickname = nickname === false && isAuthenticated() ? "friend" : nickname
   const auth0Message = nickname ? `Hello ${nickname}` : "You are not logged in"
 
   const hardCodedMessage = isLoggedIn()
