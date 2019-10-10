@@ -77,7 +77,9 @@ export const getProfile = () => {
 export const logout = () => {
   localStorage.setItem("isLoggedIn", false)
   localStorage.removeItem("nickname")
-  auth.logout()
+  auth.logout({
+    returnTo: process.env.GATSBY_AUTH0_LOGOUT_URL,
+  })
 }
 
 // workaround Gatsby WebpackError: ReferenceError: localStorage is not defined
