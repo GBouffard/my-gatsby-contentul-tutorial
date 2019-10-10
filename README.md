@@ -1,11 +1,20 @@
-:ribbon: Gatsby :heavy_plus_sign: Contentul :heavy_plus_sign: Netlify = :heart: :ribbon:
-:tophat: + Stripe + Auth0 :tophat:
+:ribbon: my Gatsby Contentul tutorial :ribbon:
 
-This is my first Gatsby + Contentul + Netlify tutorial built from scratch.
-I also added a shop with Sprite and 2 authentication system: one hard-coded, one with auth0.
+Gatsby :heavy_plus_sign: Contentul :heavy_plus_sign: Netlify :heavy_plus_sign: Stripe :heavy_plus_sign: Auth0 = :heart:
+
+This is a Gatsby site built from scratch and a few tools I wanted to play with.
+
+notes:
+
+- as weird as it seems there are 2 authentication system: one hard-coded, one with auth0.
+- The design of the site does not matter; only functionalities do.
+- The site is not auto-deployed anymore. No deploy should be made anyore because...
+- ...the Contentful space for this site has been deleted.
 
 [Deploy preview](https://gbouffard-my-gatsby-contentul-tutorial.netlify.com/)
-No deploy should be made to that repo anymore. The Contentful Space has been deleted and I have stopped the Netlify auto-deploy.
+
+No deploy should be made to that repo anymore.
+and I have stopped the Netlify auto-deploy.
 
 I used these tutorials:
 
@@ -19,7 +28,7 @@ I used these tutorials:
 
 ## How to run it locally:
 
-(should not work anymore because Contentful data has been deleted)
+(should not work anymore now that Contentful data has been deleted)
 
 ```
 git clone git@github.com:GBouffard/my-gatsby-contentul-tutorial.git
